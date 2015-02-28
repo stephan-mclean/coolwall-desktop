@@ -1,1 +1,11 @@
-<p>{{message}}</p>
+<top-nav></top-nav>
+
+<div class="mainContent">
+	<h4>My Walls</h4>
+
+	<div class="row">
+		<tile ng-repeat="wall in walls" wall="wall"></tile>
+		<add-wall-tile></add-wall-tile>
+	</div>
+
+</div>

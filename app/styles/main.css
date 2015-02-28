@@ -1,79 +1,127 @@
-/* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+html, body, .container-fluid {
+  height: 100%;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+/* Top Nav  ------------------------------ */
+.navbar-brand {
+  float: none;
+  font-size: 30px;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
+.navbar-center {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  margin: auto;
+  height:100%;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+.navbar-default {
+  border-radius: 0;
+  border-bottom: 3px solid #3B73AF; 
+  background: none;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+/* End Top Nav --------------------------- */
+
+/* Login Related Style ---------------------------------------------------- */
+
+#loginRow {
+  /* Center the content vertically on the login page */
+  min-height: 50%;
+  min-height: 50vh; 
+  display: flex;
+  align-items: center;
 }
+
+#loginWell {
+  border: none; /* Get rid of white edge from bootstrap */
+  border-radius: 8px;
+  background: rgba(255,254,254,0.50);
+  text-align: center;
+}
+
+#loginForm {
+  display: inline-block;
+  width: 50%;
+}
+
+#loginForm div {
+  padding-bottom: 5px;
+}
+
+#loginForm .input-group {
+  width: 100%; /* Fix for button size */
+}
+
+#loginContainer {
+  background-image: -o-linear-gradient(46deg, #3B73AF 7%, #E4E9EE 100%);
+  background-image: -moz-linear-gradient(46deg, #3B73AF 7%, #E4E9EE 100%);
+  background-image: -ms-linear-gradient(46deg, #3B73AF 7%, #E4E9EE 100%);
+  background-image: linear-gradient(46deg, #3B73AF 7%, #E4E9EE 100%);
+}
+
+/* End login style ------------------------------------------------------------- */
+
+/* Generic styles */
+
+.mainContent {
+  padding-left: 20px; 
+  padding-right: 20px;
+}
+
+/* -----------------------*/
+
+/* Tile Styles -------------------- */
+.tile {
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+.tileWell {
+  height: 100%;
+  background: rgba(215,215,215,0.20);
+  border: 1px solid #979797;
+}
+
+.tileWell:hover {
+  background: #FFFFFF;
+  cursor: pointer;
+  border: 1px solid #3B73AF;
+}
+
+.tileDetails {
+  position: absolute;
+  bottom: 8px;
+}
+
+/* Add Wall Tile */
+.addWallTile {
+  text-align: center;
+  font-size: 32px;
+  line-height: 200px;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.addWallTile:hover {
+  color: #35CF30;
+}
+
+/* Modal Related ------------------------ */
+.modal-header, .modal-footer {
+  text-align: center;
+  border: none;
+}
+
+.modalButton {
+  width: 30%;
+}
+
+.modalButtonAccept:hover {
+  color: #35CF30;
+  background: #FFFFFF;
+}
+
