@@ -7,6 +7,27 @@
 	color: #000000;
 }
 
+.dangerText {
+	color: #EC1D1D;
+}
+
 .greyText {
 	color: #83878C;
+}
+
+.buttonAccept {
+  background: #35CF30;
+  border: 1px solid #35CF30;
+  color: #FFFFFF;
+}
+
+.buttonAccept:hover {
+  background: #30BA2B;
+  color: #FFFFFF;
+}
+
+.buttonDanger {
+	background: #EC1D1D;
+	color: #FFFFFF;
+	border: 1px solid #EC1D1D;
 }

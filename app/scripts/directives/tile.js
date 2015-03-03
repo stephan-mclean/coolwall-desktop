@@ -8,8 +8,10 @@ angular.module('coolwallApp')
 		scope: {
 			wall: '='
 		},
-		controller : function($scope) {
-			console.log($scope.wall);
+		controller : function($scope, $location) {
+			$scope.showWall = function() {
+				$location.path('/wall/' + $scope.wall.id);
+			};
 		}
 	};
 });

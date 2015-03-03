@@ -1,0 +1,113 @@
+<div class="wallLaneWrapper col-md-3"><div class="wallLane" style="width: 100%;" id="lane{{lane.id}}">
+    <div class="wallLaneHeader">
+            <h4 class="text-center">{{lane.title}}</h4>
+            <button 
+                type="button" 
+                class="btn btn-default dropdown-toggle laneOptionsBtn" 
+                data-toggle="modal"
+                data-target="#lane{{lane.id}}Modal"
+                ng-click="showModal('#lane' + lane.id + 'Modal')"
+            >
+                <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+    </div>
+                          
+	<div class="wallLaneContent">
+        <ul ui-sortable="sortableOptions" ng-model="lane.cards" class="connectedLane">
+                <li ng-repeat="card in lane.cards" class="card">
+                        <card card="card"/>
+                </li>
+
+                <li class="cardInput">
+                        <button type="button" class="btn btn-link" ng-show="!addingCard" ng-click="startAddingCard()">Add a card</button>
+                        <input 
+                                type="text" 
+                                class="form-control cardInput"
+                                id="newCardInput{{lane.id}}" 
+                                placeholder="Card Title" 
+                                ng-model="newCardName" 
+                                ng-keyup="$event.keyCode == 13 && addNewCard()"
+                                ng-blur="addingCard = false"
+                                ng-show="addingCard"
+                        >
+                        <div ng-show="addingCard" class="saveCard">
+                                <button type="button" class="btn btn-default buttonAccept" ng-click="addNewCard()">Add</button>
+                        </div>
+                </li>
+        </ul>
+     </div>
+</div></div>
+
+<!-- Lane Options Modal --> 
+<div class="modal fade" id="lane{{lane.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{lane.title}} Options</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-group">
+                <label for="renameInput">Rename</label>
+                <input type="text" class="form-control" ng-model="lane.title" id="renameInput">
+        </div>
+
+        <button type="button" class="btn btn-link" data-dismiss="modal" ng-click="startAddingCard()">Add card</button></br>
+        <button 
+                type="button" 
+                class="btn btn-link dangerText"
+                data-toggle="modal"
+                data-target="#lane{{lane.id}}DeleteModal"
+                ng-click="showModal('#lane' + lane.id + 'DeleteModal')"
+                data-dismiss="modal"
+        >
+                Delete
+        </button>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default modalButton buttonAccept">Done</button>
+        <button type="button" class="btn btn-default modalButton" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Delete lane modal -->
+<div class="modal fade" id="lane{{lane.id}}DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+      </div>
+
+      <div class="modal-body">
+        Are you sure you want to delete this lane? 
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default modalButton buttonDanger">Delete</button>
+        <button 
+                type="button" 
+                class="btn btn-default modalButton" 
+                data-dismiss="modal"
+                data-toggle="modal"
+                data-target="#lane{{lane.id}}Modal"
+                ng-click="showModal('#lane' + lane.id + 'Modal')"
+        >
+                Cancel
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

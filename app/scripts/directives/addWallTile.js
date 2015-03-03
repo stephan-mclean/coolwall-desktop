@@ -6,7 +6,6 @@ angular.module('coolwallApp')
 		restrict : 'E',
 		templateUrl : 'views/directives/addWallTile.html',
 		controller : function($scope) {
-			
 		}
 	};
 });
