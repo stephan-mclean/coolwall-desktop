@@ -1,0 +1,32 @@
+<h4>Members</h4>
+
+<div class="members">
+	<p ng-if="members.length == 0">No members to show</p>
+
+	<div ng-repeat="member in members | toArray | orderBy:'since':true" class="member">
+		<p>
+			<span class="sapBlueText">{{member.user.name}}</span> has been
+			<span ng-if="!member.moderator"> a member </span>
+			<span ng-if="member.moderator"> an administrator </span>for 
+			<span class="greyText">{{member.since | timeago:''}}</span>
+		</p>
+	</div>
+</div>
+
+<input 
+	type="text" 
+	class="form-control cardCommentInput"
+	id="searchMembersInput" 
+	ng-model="searchFor.term"
+	ng-change="search()" 
+	placeholder="Add a member"
+	ng-focus="showAddMember = true"
+>
+
+<div ng-show="showAddMember && searchResults.length > 0" class="addMember">
+	<!--<h5>Click to add</h5> -->
+	<div ng-repeat="user in searchResults" ng-click="addMember(user)" class="searchResult">
+		<span class="sapBlueText">{{user.name}}</span></br>
+		<span class="greyText"> {{user.email}}</span>
+	</div>
+</div>

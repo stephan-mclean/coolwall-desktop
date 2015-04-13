@@ -1,0 +1,73 @@
+.wallRow .wallLane {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+  margin-left: 15px;
+  max-height: calc(100% - 18px);
+  overflow-y: scroll;
+  padding: 5px;
+
+  /* Container: */
+  background: #F1F1F1;
+  border: 1px solid #979797;
+}
+
+.wallLaneWrapper {
+  display: inline-block;
+  float: none;
+  overflow-x: visible;
+  height: 100%;
+}
+
+.wallLaneHeader {
+  position: absolute;
+  width: calc(100% - 29px);
+  left: 30px;
+  top: 0;
+  background: #F1F1F1;
+  border: 1px solid #979797;
+  box-shadow: 0 4px 2px -2px #979797;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.wallLaneContent {
+  margin-top: 39px;
+}
+
+.wallLaneContent ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.wallLaneContent ul li {
+  /* Card list item container */
+  background: none;
+  border: none;
+  margin-bottom: 10px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.wallLaneContent ul li.cardInput{
+  background: none;
+  border: none;
+}
+
+.wallLaneContent ul li.cardPlaceholder, .lanePlaceholder{
+  box-shadow: 0 0 15px rgba(0, 0, 0, .5) inset;
+  background: none;
+  border: none;
+}
+
+.laneOptionsBtn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  border: none;
+  background: none;
+}
+
+.laneOptionsBtn:hover {
+  background: none;
+}

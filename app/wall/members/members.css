@@ -1,0 +1,48 @@
+.members {
+	border: 1px solid #979797;
+	padding: 5px;
+	margin-bottom: 7px;
+	max-height: 130px;
+	overflow: auto;
+}
+
+.member {
+	border-bottom: 1px solid #D8D8D8;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 5px;
+}
+
+.member:last-child {
+	border: none;
+}
+
+#searchMembersInput {
+  border: 1px solid #979797;
+  border-radius: 0;
+  background: #F1F1F1;
+  width: 50%;
+}
+
+#searchMembersInput:hover, #searchMembersInput:focus {
+  background: #FFFFFF;
+  border: 1px solid #D8D8D8;
+}
+
+.addMember {
+  background: #D8D8D8;
+  width: 50%;
+  padding: 5px;
+}
+
+.searchResult {
+	background: #FFFFFF;
+	border: 1px solid #979797;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+.searchResult:hover {
+	cursor: pointer;
+	border: 1px solid #3B73AF;
+}

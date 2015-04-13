@@ -1,0 +1,38 @@
+.tile {
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+.tileWell {
+  height: 100%;
+  background: rgba(215,215,215,0.20);
+  border: 1px solid #979797;
+}
+
+.tileWell:hover {
+  background: #FFFFFF;
+  cursor: pointer;
+  border: 1px solid #3B73AF;
+}
+
+.tileDetails {
+  position: absolute;
+  bottom: 8px;
+}
+
+.tileDelete {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  visibility: hidden;
+  padding: 6px;
+}
+
+.tileDelete:hover {
+  border: 1px solid #EC1D1D;
+  padding: 5px;
+}
+
+.tileWell:hover .tileDelete {
+  visibility: visible; 
+}

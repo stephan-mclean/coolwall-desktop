@@ -1,0 +1,11 @@
+<top-nav user="user"></top-nav>
+
+<div class="mainContent">
+	<h4>My Walls</h4>
+
+	<div class="row">
+		<tile ng-repeat="wall in walls | toArray | orderBy:'created':true" wall="wall" walls="walls"></tile>
+		<add-wall-tile walls="walls"></add-wall-tile>
+	</div>
+
+</div>

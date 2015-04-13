@@ -1,0 +1,75 @@
+.wallMainContent {
+  height: calc(100% - 74px); 
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#wallHeading {
+  cursor: pointer;
+}
+
+.wallRow {
+  white-space: nowrap;
+  margin-right: 0;
+  margin-left: 0;
+  overflow-y: scroll; 
+  height: calc(100% - 37px);
+}
+
+/* Wall horizontal scroll bar */
+.wallRow::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+.wallRow::-webkit-scrollbar-button {
+  display: block;
+  width: 5px;
+  height: 5px;
+}
+
+.wallRow::-webkit-scrollbar-track-piece:horizontal:start {
+    border-radius: 5px 0 0 5px
+}
+
+.wallRow::-webkit-scrollbar-track-piece:horizontal:end {
+    border-radius: 0 5px 5px 0
+}
+
+.wallRow::-webkit-scrollbar-thumb:horizontal, .wallRow::-webkit-scrollbar-thumb:vertical {
+    background: #979797;
+    border-radius: 5px;
+    display: block;
+    height: 50px
+}
+
+/* End Scroll ------------------------------------------------------------------------------- */
+
+
+/* Input Related for lane and card ------------------------------- */
+
+.wallRow .inputLane {
+  background: none;
+  border: none;
+}
+
+.saveLane, .saveCard {
+  /* Container for "Add" button below new card and lane input */
+  background: #D8D8D8;
+  padding: 5px;
+}
+
+#newLaneInput, .cardInput {
+  /* Input Style for new lane and new card text input */  
+  border-radius: 0;
+  background: #F1F1F1;
+  border: 1px solid #979797;
+  color: #000000;
+}
+
+#newLaneInput:focus, #newLaneInput:hover, .cardInput:focus {
+  background: #FFFFFF;
+  border: 1px solid #D8D8D8;
+}
+
+/* End lane and card input related ---------------------------------- */

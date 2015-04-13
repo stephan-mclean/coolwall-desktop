@@ -1,0 +1,30 @@
+.navbar-brand {
+  float: none;
+  font-size: 30px;
+}
+
+.navbar-center {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  margin: auto;
+  height:100%;
+}
+
+.navbar-default {
+  border-radius: 0;
+  border-bottom: 3px solid #3B73AF; 
+  background: none;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #000000;
+  width: 250px;
+  z-index: 1000;
+}

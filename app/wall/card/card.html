@@ -1,0 +1,77 @@
+<div class="card" ng-click="showModal('#card' + card.id + 'Modal')" data-toggle="modal"
+                data-target="#card{{card.id}}Modal">
+	<h5>{{card.title}}</h5>
+  <p>{{card.description}}</p>
+  <img ng-src="{{card.cover}}" ng-if="card.cover" class="img-responsive cover">
+</div>
+
+<!-- View Card Modal --> 
+<div class="modal fade" id="card{{card.id}}Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">{{card.title}}</h3>
+      </div>
+
+      <div class="modal-body">
+        
+      	<p class="largeDescription" id="cardDescription" ng-click="editingDescription=true" ng-show="card.description && !editingDescription">
+      		{{card.description}}
+      	</p>
+      	<input type="text" class="form-control" ng-focus="editingDescription=true"ng-model="card.description" placeholder="Enter Description" ng-show="editingDescription || !card.description">
+
+        <div class="modalSection">
+          <attachments attachments="card.attachments" card="card"/>
+        </div>
+        
+        <div class="modalSection">
+          <members members="card.members" search-func="searchMembers(search)" add-func="addMember(user)"/>
+        </div>
+        
+        <div class="modalSection">
+          <comments card="card" comments="card.comments"/>
+        </div>
+
+        <div class="modalSection">
+          <button type="button" class="btn btn-link dangerText" data-dismiss="modal" ng-click="showModal('#card' + card.id + 'DeleteModal')" data-toggle="modal"
+                data-target="#card{{card.id}}DeleteModal">Delete Card</button>
+        </div>
+        
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default modalButton buttonAccept" data-dismiss="modal" ng-click="updateCard()">Done</button>
+        <button type="button" class="btn btn-default modalButton" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Delete Card Modal -->
+<div class="modal fade" id="card{{card.id}}DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Delete "{{card.title}}"?</h3>
+      </div>
+
+      <div class="modal-body">
+        <p class="largeDescription">Are you sure you want to delete this card?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default modalButton buttonDanger" data-dismiss="modal" ng-click="deleteCard()">Delete</button>
+        <button type="button" class="btn btn-default modalButton" data-dismiss="modal" ng-click="showModal('#card' + card.id + 'Modal')" data-toggle="modal" data-target="#card{{card.id}}Modal">Cancel</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
