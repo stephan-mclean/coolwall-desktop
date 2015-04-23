@@ -59,14 +59,14 @@ app.factory('Authentication', function($http, LocalStorage, $q) {
 
 		logout: function() {
 			var deferred = $q.defer();
-			$http.put(baseUrl + '/logout').success(function(data, status, headers, config) {
+			//$http.put(baseUrl + '/logout').success(function(data, status, headers, config) {
 				delete $http.defaults.headers.common.Authorization;
 				LocalStorage.deleteItem('token');
 				deferred.resolve('Success');
-			})
-			.error(function(data, status, headers, config) {
-				deferred.reject('error');
-			});
+			//})
+			//.error(function(data, status, headers, config) {
+			//	deferred.reject('error');
+			//});
 			return deferred.promise;
 		}
 	};
@@ -85,4 +85,29 @@ app.factory('User', function($http, $q) {
 			return deferred.promise;
 		}
 	}
-})
+});
+
+app.factory('Notifications', function($http, $q) {
+	return {
+		getNotifications: function() {
+			var deferred = $q.defer();
+			$http.get(baseUrl + '/notifications').success(function(data) {
+				deferred.resolve(data);
+			})
+			.error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
+		},
+		markAllRead: function() {
+			var deferred = $q.defer();
+			$http.put(baseUrl + '/notifications/markRead').success(function(data) {
+				deferred.resolve(data);
+			})
+			.error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
+		}
+	}
+});

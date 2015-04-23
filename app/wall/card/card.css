@@ -25,3 +25,6 @@
   cursor: pointer;
 }
 
+.cardDescriptionTextArea {
+  resize: none;
+}

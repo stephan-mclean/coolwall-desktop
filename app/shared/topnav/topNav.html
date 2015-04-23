@@ -6,11 +6,92 @@
 
 		<div class="navbar-collapse collapse">
     		<ul class="nav navbar-nav navbar-right">
-        		<li><a href="#">Logged in as: {{user.name}}</a></li>
+        		<li>
+    				<div class="dropdown">
+					  <button 
+              class="btn btn-default dropdown-toggle topNavBtn dropDownBtn greyText" 
+              type="button" 
+              id="dropdownMenu1" 
+              data-toggle="dropdown" 
+              aria-expanded="true">
+					     {{user.name}}
+					     <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					    <li role="presentation">
+					    	<button 
+					    		type="button" 
+					    		class="btn btn-link dangerText" 
+					    		data-toggle="modal" 
+					    		data-target="#logoutModal" 
+					    		ng-click="showModal('#logoutModal')">Logout</button>
+					    </li>
+					  </ul>
+					</div>
+        		</li>
+        		<li>
+              <div class="dropdown">
+                <button 
+                  class="btn btn-default topNavBtn notificationBtn" 
+                  ng-class="{'dangerText' : notifications && notifications.length > 0, 
+                  'greyText': !notifications || notifications.length == 0 || beenViewed}"
+                  type="button" 
+                  id="dropdownMenu2" 
+                  data-toggle="dropdown" 
+                  aria-expanded="true"
+                  ng-click="beenViewed = true"
+                  >
+                    <span class="glyphicon glyphicon-bell"></span>
+                    <span ng-show="notifications && notifications.length > 0">
+                      {{notifications.length}}
+                    </span>
+                </button>
+                <ul class="dropdown-menu notificationMenu" role="menu" aria-labelledby="dropdownMenu2">
+                  <li role="presentation" 
+                      ng-repeat="notification in notifications | toArray | orderBy:'created':true"
+                      class="dropdownNotification">
+                    <span>{{notification.title}}</span></br>
+                    <span ng-if="notification.subTitle" class="greyText">"{{notification.subTitle}}"</span>
+                  </li>
+                  <li role="presentation" ng-show="notifications && notifications.length > 0">
+                    <button 
+                      type="button" 
+                      class="btn btn-link"
+                      ng-click="markNotificationsAsRead()">
+                      Mark all as read
+                    </button>
+                  </li>
+                  <li ng-show="!notifications || notifications.length == 0" class="dropdownNotification">
+                    No notifications to show.
+                  </li> 
+                </ul>
+        		</li>
       		</ul>
   		</div>
 
 	</div>
 </nav>
 
-<!-- Side Menu <div class="menu"></div> -->
+<!-- Logout Modal --> 
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Logout</h3>
+      </div>
+
+      <div class="modal-body">
+        <p class="largeDescription">Are you sure you wish to logout?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default modalButton buttonDanger" data-dismiss="modal" ng-click="logout()">Logout</button>
+        <button type="button" class="btn btn-default modalButton" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

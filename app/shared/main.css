@@ -70,5 +70,19 @@ h1, h2, h3, h4, h5, h6, p {
   padding-top: 5px;
 }
 
+.disabledButton {
+  background: #83878C;
+  color: #000000;
+}
+
+.disabledButton:hover {
+  background: #83878C;
+  color: #000000;
+}
+
+.iconButton {
+  border: none;
+}
+
 /* End Modal Related ----------------------------------- */
 

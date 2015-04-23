@@ -20,23 +20,30 @@
       	<p class="largeDescription" id="cardDescription" ng-click="editingDescription=true" ng-show="card.description && !editingDescription">
       		{{card.description}}
       	</p>
-      	<input type="text" class="form-control" ng-focus="editingDescription=true"ng-model="card.description" placeholder="Enter Description" ng-show="editingDescription || !card.description">
+
+        <div ng-show="editingDescription || !card.description">
+          {{1000 - card.description.length}}
+         <textarea rows="3" class="form-control cardDescriptionTextArea" ng-focus="editingDescription=true"ng-model="card.description" placeholder="Enter Description" ></textarea>
+        </div>
 
         <div class="modalSection">
           <attachments attachments="card.attachments" card="card"/>
         </div>
         
         <div class="modalSection">
-          <members members="card.members" search-func="searchMembers(search)" add-func="addMember(user)"/>
+          <members 
+            members="card.members" 
+            search-func="searchMembers(search)" 
+            add-func="addMember(user)" 
+            delete-func="deleteMember(member)"/>
         </div>
         
         <div class="modalSection">
-          <comments card="card" comments="card.comments"/>
+          <comments user="user" card="card" comments="card.comments"/>
         </div>
 
         <div class="modalSection">
-          <button type="button" class="btn btn-link dangerText" data-dismiss="modal" ng-click="showModal('#card' + card.id + 'DeleteModal')" data-toggle="modal"
-                data-target="#card{{card.id}}DeleteModal">Delete Card</button>
+          <button type="button" class="btn btn-link dangerText" data-dismiss="modal" ng-click="showModal('#card' + card.id + 'DeleteModal')" data-toggle="modal" data-target="#card{{card.id}}DeleteModal">Delete Card</button>
         </div>
         
         

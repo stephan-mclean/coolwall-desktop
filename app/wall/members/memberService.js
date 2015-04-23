@@ -12,6 +12,17 @@ angular.module('coolwallApp')
 			return deferred.promise;
 		},
 
+		searchWallMembers : function(wallId, search) {
+			var deferred = $q.defer();
+			$http.post(baseUrl + '/wall/' + wallId + "/searchMembers", search).success(function(data) {
+				deferred.resolve(data);
+			})
+			.error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
+		},
+
 		addWallMember : function(wallId, user) {
 			var deferred = $q.defer();
 			$http.post(baseUrl + '/wall/' + wallId + "/addMember", user).success(function(data) {
@@ -34,15 +45,28 @@ angular.module('coolwallApp')
 			return deferred.promise;
 		},
 
-		searchWallMembers : function(wallId, search) {
+		deleteWallMember : function(wallId, member) {
 			var deferred = $q.defer();
-			$http.post(baseUrl + '/wall/' + wallId + "/searchMembers", search).success(function(data) {
+			$http.delete(baseUrl + '/wall/' + wallId + "/member/" + member).success(function(data) {
 				deferred.resolve(data);
 			})
 			.error(function(data, status, headers, config) {
 				deferred.reject(status);
 			});
 			return deferred.promise;
-		}
+		},
+
+		deleteCardMember : function(cardId, member) {
+			console.log(member);
+			var deferred = $q.defer();
+			$http.delete(baseUrl + '/card/' + cardId + "/member/" + member).success(function(data) {
+				deferred.resolve(data);
+			})
+			.error(function(data, status, headers, config) {
+				deferred.reject(status);
+			});
+			return deferred.promise;
+		},
+
 	};
 });

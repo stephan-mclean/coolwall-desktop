@@ -8,9 +8,13 @@ angular.module('coolwallApp')
 		scope: {
 			members: '=',
 			searchFunc: '&',
-			addFunc: '&'
+			addFunc: '&',
+			deleteFunc:'&',
+			moderator: '='
 		},
-		controller : function($scope) {
+		controller : function($scope, $rootScope) {
+			$scope.user = $rootScope.user;
+
 			$scope.search = function() {
 				$scope.searchFunc({search: $scope.searchFor}).then(function(result) {
 					$scope.searchResults = result;
@@ -24,6 +28,16 @@ angular.module('coolwallApp')
 					$scope.searchResults = [];
 					$scope.searchFor.term = '';
 				})
+			};
+
+			$scope.deleteMember = function(member) {
+				var theMember = {id: member.user.id + ""};
+				$scope.deleteFunc({member: theMember}).then(function(result) {
+					var index = $scope.members.indexOf(member);
+					if(index > -1) {
+						$scope.members.splice(index, 1);
+					}
+				});
 			}
 		}
 	};

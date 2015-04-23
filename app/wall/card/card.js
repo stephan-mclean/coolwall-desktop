@@ -12,6 +12,8 @@ angular.module('coolwallApp')
 		controller : function($scope, $rootScope, $timeout, CardService, MemberService) {
 			$scope.editingDescription = false;
 
+			$scope.user = $rootScope.user;
+
 
 			$scope.showModal = function(id) {
 
@@ -61,12 +63,16 @@ angular.module('coolwallApp')
 			}
 
 			$scope.searchMembers = function(search) {
-		      return MemberService.searchAllUsers(search);
+		      return MemberService.searchWallMembers($scope.card.wallId, search);
 		    };
 
 		    $scope.addMember = function(user) {
 		      return MemberService.addCardMember($scope.card.id, user);
 		    };
+
+		    $scope.deleteMember = function(member) {
+		    	return MemberService.deleteCardMember($scope.card.id, member.id);
+		    }
 		}
 	};
 });

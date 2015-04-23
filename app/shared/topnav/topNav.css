@@ -28,3 +28,26 @@
   width: 250px;
   z-index: 1000;
 }
+
+.topNavBtn {
+  border: none;
+  margin-top: 6px;
+}
+
+.dropDownBtn:hover, .dropDownBtn:focus, .dropDownBtn:active {
+  color: #000000 !important;
+}
+
+.dropdownNotification {
+  padding: 5px;
+  margin: 5px;
+  border-bottom: 1px solid #D8D8D8;
+}
+
+.dropdownNotification:last-child {
+  border-bottom: none;
+}
+
+.notificationMenu {
+  min-width: 220px;
+}

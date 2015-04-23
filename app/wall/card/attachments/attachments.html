@@ -7,11 +7,13 @@
 	<div ng-repeat="attachment in attachments | toArray | orderBy:'created':true" class="row attachment">
 		<!-- Thumbnail -->
 		<div class="col-md-4">
-			<img ng-src="{{attachment.url}}" class="img-responsive">
+			<!--<img ng-src="{{attachment.url}}" class="img-responsive"> -->
+      <modal-enabled-image attachment="attachment"></modal-enabled-image>
 		</div>
-		<!-- Description --> 
+		<!-- Details --> 
 		<div class="col-md-8">
-      <p ng-if="attachment.fileName">{{attachment.fileName}}</p>
+      <p ng-if="attachment.description">{{attachment.description}}</p>
+      <p ng-if="attachment.fileName"><span class="sapBlueText">File Name: </span>{{attachment.fileName}}</p>
 			<p>Added <span class="greyText">{{attachment.created | timeago:'ago'}}</span></p>
 			<button type="button" class="btn btn-link dangerText" ng-click="showModal('#attachment' + attachment.id + 'DeleteModal')" data-dismiss="modal" data-toggle="modal" data-target="#attachment{{attachment.id}}DeleteModal">Delete</button>
 		</div>
@@ -60,6 +62,12 @@
       	<span>{{400 - newAttachment.url.length}}</span>
         <input type="text" ng-disabled="newAttachment.data"class="form-control attachmentUrlInput" placeholder="Enter a URL" ng-model="newAttachment.url">
         <input type="file" fileread="newAttachment.data" filename="newAttachment.fileName"/>
+        
+        <div ng-show="newAttachment.url.length > 0 || newAttachment.data" id="attachmentDescriptionInput">
+          {{200 - newAttachment.description.length}}
+          <input type="text" class="form-control" placeholder="Enter a description.." ng-model="newAttachment.description">
+        </div>
+      
       </div>
 
       <div class="modal-footer">

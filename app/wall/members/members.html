@@ -3,13 +3,24 @@
 <div class="members">
 	<p ng-if="members.length == 0">No members to show</p>
 
-	<div ng-repeat="member in members | toArray | orderBy:'since':true" class="member">
-		<p>
-			<span class="sapBlueText">{{member.user.name}}</span> has been
-			<span ng-if="!member.moderator"> a member </span>
-			<span ng-if="member.moderator"> an administrator </span>for 
-			<span class="greyText">{{member.since | timeago:''}}</span>
-		</p>
+	<div ng-repeat="member in members | toArray | orderBy:'since':true" class="row member">
+		<div class="col-md-10">
+			<p>
+				<span class="sapBlueText">{{member.user.name}}</span> has been
+				<span ng-if="!member.moderator"> a member </span>
+				<span ng-if="member.moderator"> an administrator </span>for 
+				<span class="greyText">{{member.since | timeago:''}}</span>
+			</p>
+		</div>
+
+		<div class="col-md-2" ng-if="moderator || member.user.id == user.id">
+			<button 
+				type="button" 
+				class="btn btn-default iconButton"
+				ng-click="deleteMember(member)">
+				<span class="glyphicon glyphicon-remove dangerText"></span>
+			</button>
+		</div>
 	</div>
 </div>
 

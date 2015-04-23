@@ -17,6 +17,7 @@ angular.module('coolwallApp')
 				$rootScope.showModal(id);
 				$(id).on("hidden.bs.modal", function() {
 					$scope.newAttachment.url = '';
+					$scope.newAttachment.description = '';
 				});
 			}
 
@@ -29,6 +30,7 @@ angular.module('coolwallApp')
 
 				CardService.addAttachment($scope.card.id, $scope.newAttachment).then(function(result) {
 					/* Reset cover variables for other attachments */
+					console.log(result);
 					for(var i = 0; i < $scope.attachments.length; i++) {
 						$scope.attachments[i].cover = 0;
 					}

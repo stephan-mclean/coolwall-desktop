@@ -31,7 +31,11 @@
                                 ng-show="addingCard"
                         >
                         <div ng-show="addingCard" class="saveCard">
-                                <button type="button" class="btn btn-default buttonAccept" ng-click="addNewCard()">Add</button>
+                                <button 
+                                    type="button" 
+                                    ng-disabled="!newCardName || newCardName.length == 0"
+                                    class="btn buttonAccept" 
+                                    ng-click="addNewCard()">Add</button>
                         </div>
                 </li>
         </ul>

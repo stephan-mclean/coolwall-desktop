@@ -24,3 +24,7 @@
 .attachment:last-child {
 	border: none;
 }
+
+#attachmentDescriptionInput {
+	margin-top: 5px;
+}

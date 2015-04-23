@@ -1,4 +1,4 @@
-<top-nav user="user"></top-nav>
+<top-nav user="user" notifications="notifications"></top-nav>
 
 <div class="mainContent wallMainContent">
 	<h3 class="text-center" id="wallHeading">
@@ -24,7 +24,11 @@
                 		ng-blur="showSaveLane = false"
                 	>
                 	<div ng-show="showSaveLane" class="saveLane">
-                		<button type="button" class="btn btn-default buttonAccept" ng-click="addNewLane()">Add</button>
+                		<button 
+                      type="button" 
+                      ng-disabled="!newLaneName || newLaneName.length == 0"
+                      class="btn buttonAccept" 
+                      ng-click="addNewLane()">Add</button>
                 	</div>
 		</div>
 
@@ -50,7 +54,12 @@
         </div>
 
         <div class="modalSection">
-          <members members="wall.members" search-func="searchMembers(search)" add-func="addMember(user)"/>
+          <members 
+            members="wall.members" 
+            moderator="wall.moderator" 
+            search-func="searchMembers(search)" 
+            add-func="addMember(user)"
+            delete-func="deleteMember(member)"/>
         </div>
 
         <button type="button" class="btn btn-link" data-dismiss="modal" ng-click="startAddingLane()">Add lane</button></br>
