@@ -48,7 +48,19 @@ angular.module('coolwallApp')
 					'description' : $scope.card.description,
 				};
 				CardService.updateCard($scope.card.id, updatedCard).then(function(result) {
-					console.log(result);
+					$.snackbar(
+						{
+							content: "Card updated successfully!",
+							style: "snackbarSuccess"
+						}
+					);
+				}, function(error) {
+					$.snackbar(
+						{
+							content: "Something went wrong updating the card. Please try again.",
+							style: "snackbarDanger"
+						}
+					);
 				});
 			};
 

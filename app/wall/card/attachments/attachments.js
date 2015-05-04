@@ -30,7 +30,7 @@ angular.module('coolwallApp')
 
 				CardService.addAttachment($scope.card.id, $scope.newAttachment).then(function(result) {
 					/* Reset cover variables for other attachments */
-					console.log(result);
+					
 					for(var i = 0; i < $scope.attachments.length; i++) {
 						$scope.attachments[i].cover = 0;
 					}
@@ -39,6 +39,21 @@ angular.module('coolwallApp')
 					$scope.newAttachment.url = '';
 					$scope.newAttachment.data = '';
 					$scope.newAttachment.fileName = '';
+
+					$.snackbar(
+						{
+							content: "Attachment added successfully!",
+							style: "snackbarSuccess"
+						}
+					);
+
+				}, function(error) {
+					$.snackbar(
+						{
+							content: "Something went wrong adding the attachment. Please try again.",
+							style: "snackbarDanger"
+						}
+					);
 				});
 
 				
@@ -62,6 +77,20 @@ angular.module('coolwallApp')
 					if(result != null && result != undefined && result.url) {
 						$scope.card.cover = result.url;
 					}
+
+					$.snackbar(
+						{
+							content: "Attachment deleted successfully!",
+							style: "snackbarSuccess"
+						}
+					);
+				}, function(error) {
+					$.snackbar(
+						{
+							content: "Something went wrong deleting the attachment. Please try again.",
+							style: "snackbarDanger"
+						}
+					);
 				})
 			}
 		}

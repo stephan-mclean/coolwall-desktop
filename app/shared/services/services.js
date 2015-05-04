@@ -72,7 +72,7 @@ app.factory('Authentication', function($http, LocalStorage, $q) {
 	};
 });
 
-app.factory('User', function($http, $q) {
+app.factory('User', function($http, $q, LocalStorage) {
 	return {
 		getCurrentUser: function() {
 			var deferred = $q.defer();
@@ -81,6 +81,19 @@ app.factory('User', function($http, $q) {
 			})
 			.error(function(data, status, headers, config) {
 				deferred.reject(status);
+			});
+			return deferred.promise;
+		},
+
+		register: function(user) {
+			var deferred = $q.defer();
+			$http.post(baseUrl + '/register', user).success(function(data) {
+				$http.defaults.headers.common.Authorization = data.token;
+				LocalStorage.set('token', data.token);
+				deferred.resolve(data);
+			})
+			.error(function(data, status, headers, config) {
+				deferred.reject(data);
 			});
 			return deferred.promise;
 		}

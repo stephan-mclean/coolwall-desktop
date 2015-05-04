@@ -40,7 +40,19 @@ angular.module('coolwallApp')
     $scope.updateWall = function() {
       var updatedWall = {'title' : $scope.wall.title};
       WallService.updateWall($scope.wall.id, updatedWall).then(function(result) {
-        // Check for errors
+        $.snackbar(
+            {
+              content: "Wall updated successfully!",
+              style: "snackbarSuccess"
+            }
+        );
+      }, function(error) {
+        $.snackbar(
+            {
+              content: "Something went wrong when updating the wall, please try again.",
+              style: "snackbarDanger"
+            }
+          );
       });
     };
 

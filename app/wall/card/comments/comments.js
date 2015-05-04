@@ -15,6 +15,21 @@ angular.module('coolwallApp')
 				CardService.addComment($scope.card.id, $scope.comment).then(function(result) {
 					$scope.comment.text = '';
 					$scope.comments.push(result);
+
+					$.snackbar(
+						{
+							content: "Comment added successfully!",
+							style: "snackbarSuccess"
+						}
+					);
+
+				}, function(error) {
+					$.snackbar(
+						{
+							content: "Something went wrong when adding the comment, pleast try again.",
+							style: "snackbarDanger"
+						}
+					);
 				});
 			};
 
@@ -24,6 +39,21 @@ angular.module('coolwallApp')
 					if(index > -1) {
 						$scope.comments.splice(index, 1);
 					}
+
+					$.snackbar(
+						{
+							content: "Comment deleted successfully!",
+							style: "snackbarSuccess"
+						}
+					);
+
+				}, function(error) {
+					$.snackbar(
+						{
+							content: "Something went wrong when deleting the comment. Please try again.",
+							style: "snackbarDanger"
+						}
+					);
 				});
 			};
 		}

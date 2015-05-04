@@ -6,24 +6,62 @@
   align-items: center;
 }
 
-#loginWell {
+#loginWell, #registerWell {
   border: none; /* Get rid of white edge from bootstrap */
   border-radius: 8px;
   background: rgba(255,254,254,0.50);
   text-align: center;
   margin-top: 30%;
+  box-shadow: 0px 5px 10px #7B7878;
 }
 
-#loginForm {
+#registerWell {
+  display: none;
+  margin-top: 0;
+}
+
+#loginWell.animatedOut {
+
+  /*animation-name: loginOut;
+  animation-duration: 1s;
+  animation-timing-function: ease;*/
+
+  -webkit-animation: loginSlideOut 1s ease;
+  -webkit-animation-fill-mode: forwards;  
+}
+
+#loginWell.animatedIn {
+
+  /*animation-name: loginOut;
+  animation-duration: 1s;
+  animation-timing-function: ease;*/
+
+  -webkit-animation: loginSlideIn 1s ease;
+  -webkit-animation-fill-mode: forwards;  
+}
+
+#registerWell.animatedIn {
+  display: block;
+  -webkit-animation: registerSlideIn 1s ease;
+  -webkit-animation-fill-mode: forwards; 
+}
+
+#registerWell.animatedOut {
+  
+  -webkit-animation: registerSlideOut 1s ease;
+  -webkit-animation-fill-mode: forwards;
+}
+
+#loginForm, #registerForm {
   display: inline-block;
   width: 50%;
 }
 
-#loginForm div {
+#loginForm div, #registerForm div {
   padding-bottom: 5px;
 }
 
-#loginForm .input-group {
+#loginForm .input-group, #registerForm .input-group {
   width: 100%; /* Fix for button size */
 }
 
@@ -34,6 +72,61 @@
   background-image: linear-gradient(46deg, #3B73AF 7%, #E4E9EE 100%);
 }
 
+#signUp {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
 .error {
   border: 1px solid #EC1D1D;
+}
+
+/*@keyframes loginOut {
+  0% {
+      top: 0;
+   }
+
+   100% {
+      top: -500px;
+   }
+}*/
+
+@-webkit-keyframes loginSlideOut {
+   from {
+      -webkit-transform: translateY(0);
+   }
+
+   to {
+      -webkit-transform: translateY(-1000px);
+   }
+}
+
+@-webkit-keyframes loginSlideIn {
+   from {
+      -webkit-transform: translateY(-1000px);
+   }
+
+   to {
+      -webkit-transform: translateY(0);
+   }
+}
+
+@-webkit-keyframes registerSlideIn {
+   from {
+      -webkit-transform: translateY(1000px);
+   }
+
+   to {
+      -webkit-transform: translateY(-300px);
+   }
+}
+
+@-webkit-keyframes registerSlideOut {
+   from {
+      -webkit-transform: translateY(-300px);
+   }
+
+   to {
+      -webkit-transform: translateY(1000px);
+   }
 }

@@ -133,16 +133,7 @@ angular.module('coolwallApp')
     		  	/* Received from another list */
     		  	ui.item.data.targetLane = $scope.lane.id;
     		  	ui.item.data.targetLaneCards = $scope.lane.cards;
-    		  },
-    		  /*change : function(event, ui) {
-    		  	
-    		  	$(ui.placeholder[0]).css({"border-top-width": "0px"});
-    		  	$(ui.placeholder[0]).css('height', "0px");
-		        setTimeout(function(){
-		            $(ui.placeholder[0]).css("border-top-width", $(ui.item[0]).height());
-		            $(ui.placeholder[0]).css('height', $(ui.item[0]).height());
-		        },10);
-    		  } */
+    		  }
     		};
 		}
 	};

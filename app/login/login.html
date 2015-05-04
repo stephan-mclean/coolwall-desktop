@@ -24,7 +24,41 @@
 
         </form>
 
+        <button class="btn btn-default btn-link sapBlueText" id="signUp" type="button" ng-click="showRegister()">
+          Don't have an account? Click here to sign up!
+        </button>
+
       </div>
+
+      <div class="well" id="registerWell">
+        
+        <h3>Sign Up</h3>
+
+        <form id="registerForm">
+          
+          <div class="input-group" >
+            <input type="text" ng-class="{'error': errorMessage}" class="form-control" placeholder="Name" ng-model="newUser.name">
+          </div>
+
+          <div class="input-group" >
+            <input type="text" ng-class="{'error': errorMessage}" class="form-control" placeholder="Email" ng-model="newUser.email">
+          </div>
+
+          <div class="input-group">
+            <input type="password" ng-class="{'error': errorMessage}" class="form-control" placeholder="Password" ng-model="newUser.password">
+          </div>
+
+          <div class="input-group">
+              <button class="btn btn-default btn-block sapBlueText" type="button" ng-click="register()">
+                Sign Up
+              </button>
+          </div>
+
+        </form>
+  
+      </div>
+
     </div>
+
   </div>
 </div>

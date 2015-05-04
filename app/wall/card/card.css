@@ -28,3 +28,15 @@
 .cardDescriptionTextArea {
   resize: none;
 }
+
+.cardDetailsSection {
+  margin-top: 8px;
+}
+
+.cardDetailsIcon {
+  margin-right: 5px;
+}
+
+.cardDetailsValue {
+  margin-left: 3px;
+}

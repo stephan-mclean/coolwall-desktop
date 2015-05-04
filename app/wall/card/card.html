@@ -3,6 +3,12 @@
 	<h5>{{card.title}}</h5>
   <p>{{card.description}}</p>
   <img ng-src="{{card.cover}}" ng-if="card.cover" class="img-responsive cover">
+  <div class="greyText cardDetailsSection">
+    <span class="glyphicon glyphicon-user cardDetailsIcon" aria-hidden="true"><span class="cardDetailsValue">{{card.numMembers}}</span></span>
+    <span class="glyphicon glyphicon-comment cardDetailsIcon" aria-hidden="true"><span class="cardDetailsValue">{{card.numComments}}</span></span>
+    <span class="glyphicon glyphicon-file cardDetailsIcon" aria-hidden="true"><span class="cardDetailsValue">{{card.numAttachments}}</span></span>
+  </div>
+  
 </div>
 
 <!-- View Card Modal --> 
@@ -16,6 +22,11 @@
       </div>
 
       <div class="modal-body">
+
+        <div class="form-group">
+                <h4>Rename</h4>
+                <input type="text" class="form-control" ng-model="card.title">
+        </div>
         
       	<p class="largeDescription" id="cardDescription" ng-click="editingDescription=true" ng-show="card.description && !editingDescription">
       		{{card.description}}
